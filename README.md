@@ -6,8 +6,9 @@ Dokumen ini menyediakan instruksi tentang cara menggunakan endpoint API /api/tok
 
 * Overview
 * Endpoint Lists
-* Contoh Penggunaan dengan Postman
 * Contoh Pengugnaan dengna cURL
+* Contoh Penggunaan dengan Postman
+
 * Notes
 
 ## Overview
@@ -23,7 +24,7 @@ API ini menggunakan JSON Web Tokens (JWT) untuk autentikasi. Klien harus terlebi
 * PATH: `/api/token`
 * Metode HTTP: `POST`
 * Header: 
- * `Content-Type: application/x-www-form-urlencoded`
+    * `Content-Type: application/x-www-form-urlencoded`
 * Body Parameters : Menggunakan form data (sebagai application/x-www-form-urlencoded):
     * `username` : string
     * `password` : string
@@ -63,8 +64,8 @@ Ini berarti username atau password yang diberikan tidak valid.
 * PATH: `/api/protected-route`
 * Metode HTTP: `GET`
 * Header: 
- * `Authorization: Bearer <JWT_TOKEN>`
- Ganti `<JWT_TOKEN>` dengan token akses yang didapat dari endpoint `/api/token`.
+    * `Authorization: Bearer <JWT_TOKEN>`
+      Ganti `<JWT_TOKEN>` dengan token akses yang didapat dari endpoint `/api/token`.
 
 * Body Parameters : Tidak ada parameter tambahan
 
@@ -89,40 +90,8 @@ Di mana `diddy` adalah username dari pengguna yang telah otentikasi.
 {
   "detail": "Could not validate credentials"
 }
-
 ```
 Ini berarti token yang diberikan tidak valid, telah kadaluarsa, atau tidak diberikan sama sekali.
-
-
-## Contoh Penggunaan dengan Postman
-
-### 1. Mendapatkan Access Token
-    * Metode: ```POST```
-    * URL: ```https://tofood.azurewebsites.net/api/token```
-    * Headers: ```Content-Type``` : ```application/x-www-form-urlencoded```
-    * Body (x-www-form-urlencoded):
-        * ```username``` : ```diddy```
-        * ```password``` : ```secret```
-
-Respon:
-```json
-{
-  "access_token": "<JWT_TOKEN>",
-  "token_type": "bearer"
-}
-```
-
-### 2. Mengakses Endpoint yang Dilindungi
-    * Metode: ```GET```
-    * URL: ```https://tofood.azurewebsites.net/api/protected-route```
-    * Headers: ```Authorization``` : ```Bearer <JWT_TOKEN>```
-
-Respon:
-```json
-{
-  "message": "Hello, diddy!"
-}
-```
 
 ## Contoh Penggunaaan dengan cURL
 
@@ -147,6 +116,38 @@ Respon:
 curl -X GET "https://tofood.azurewebsites.net/api/protected-route" \
      -H "Authorization: Bearer <JWT_TOKEN>"
 ```
+Respon:
+```json
+{
+  "message": "Hello, diddy!"
+}
+```
+
+## Contoh Penggunaan dengan Postman
+
+### 1. Mendapatkan Access Token
+
+   * Metode: ```POST```
+   * URL: ```https://tofood.azurewebsites.net/api/token```
+   * Headers: ```Content-Type``` : ```application/x-www-form-urlencoded```
+   * Body (x-www-form-urlencoded):
+      * ```username``` : ```diddy```
+      * ```password``` : ```secret```
+
+Respon:
+```json
+{
+  "access_token": "<JWT_TOKEN>",
+  "token_type": "bearer"
+}
+```
+
+### 2. Mengakses Endpoint yang Dilindungi
+
+   * Metode: ```GET```
+   * URL: ```https://tofood.azurewebsites.net/api/protected-route```
+   * Headers: ```Authorization``` : ```Bearer <JWT_TOKEN>```
+
 Respon:
 ```json
 {
