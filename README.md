@@ -25,13 +25,13 @@ API ini menggunakan JSON Web Tokens (JWT) untuk autentikasi. Klien harus terlebi
 * Header: 
  * `Content-Type: application/x-www-form-urlencoded`
 * Body Parameters : Menggunakan form data (sebagai application/x-www-form-urlencoded):
- * `username` : string
- * `password` : string
+    * `username` : string
+    * `password` : string
 
 * Contoh Request : 
 ```http
 POST /api/token HTTP/1.1
-Host: 127.0.0.1:8000
+Host: https://tofood.azurewebsites.net
 Content-Type: application/x-www-form-urlencoded
 
 username=diddy&password=secret
@@ -71,7 +71,7 @@ Ini berarti username atau password yang diberikan tidak valid.
 * Contoh Request : 
 ```http
 GET /api/protected-route HTTP/1.1
-Host: 127.0.0.1:8000
+Host: https://tofood.azurewebsites.net
 Authorization: Bearer <JWT_TOKEN>
 
 ```
@@ -98,7 +98,7 @@ Ini berarti token yang diberikan tidak valid, telah kadaluarsa, atau tidak diber
 
 ### 1. Mendapatkan Access Token
     * Metode: ```POST```
-    * URL: ```http://127.0.0.1:8000/api/token```
+    * URL: ```https://tofood.azurewebsites.net/api/token```
     * Headers: ```Content-Type``` : ```application/x-www-form-urlencoded```
     * Body (x-www-form-urlencoded):
         * ```username``` : ```diddy```
@@ -114,7 +114,7 @@ Respon:
 
 ### 2. Mengakses Endpoint yang Dilindungi
     * Metode: ```GET```
-    * URL: ```http://127.0.0.1:8000/api/protected-route```
+    * URL: ```https://tofood.azurewebsites.net/api/protected-route```
     * Headers: ```Authorization``` : ```Bearer <JWT_TOKEN>```
 
 Respon:
@@ -129,7 +129,7 @@ Respon:
 ### 1. Mendapatkan Access Token
 
 ```bash
-curl -X POST "http://127.0.0.1:8000/api/token" \
+curl -X POST "https://tofood.azurewebsites.net/api/token" \
      -H "Content-Type: application/x-www-form-urlencoded" \
      -d "username=diddy&password=secret"
 ```
@@ -144,7 +144,7 @@ Respon:
 ### 2. Mengakses Endpoint yang Dilindungi
 
 ```bash
-curl -X GET "http://127.0.0.1:8000/api/protected-route" \
+curl -X GET "https://tofood.azurewebsites.net/api/protected-route" \
      -H "Authorization: Bearer <JWT_TOKEN>"
 ```
 Respon:
