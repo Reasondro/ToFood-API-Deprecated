@@ -16,7 +16,7 @@ app = FastAPI()
 @app.get("/sample")
 async def index():
     return {
-        "info": "Try /hello/Shivani for parameterized route.",
+        "info": "Try /hello/Sandro for parameterized route.",
     }
     
 
