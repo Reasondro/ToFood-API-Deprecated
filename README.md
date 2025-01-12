@@ -1,3 +1,7 @@
+# THIS REPO IS DEPRECATED. 
+# GO TO https://github.com/Reasondro/ToFood-API
+
+
 # Dokumentasi API ToFood
 
 Dokumen ini menyediakan instruksi tentang cara menggunakan endpoint API /api/token dan /api/protected-route. Endpoint ini digunakan untuk autentikasi dan mengakses sumber daya yang dilindungi.
